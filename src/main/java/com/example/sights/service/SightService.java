@@ -9,15 +9,9 @@ public interface SightService {
 
     List<Sight> readAll();
 
-    Sight read(Long id);
+    Sight read(int id);
 
-    boolean update(Sight sight, Long id);
+    boolean update(Sight sight, int id);
 
-    boolean delete(Long id);
-
-    Sight read(Long id);
-
-    boolean update(Sight sight, Long id);
-
-    boolean delete(Long id);
+    boolean delete(int id);
 }

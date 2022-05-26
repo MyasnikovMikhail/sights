@@ -21,12 +21,12 @@ public class SightServiceImpl implements SightService{
     }
 
     @Override
-    public Sight read(Long id) {
-        return sightsRepo.getReferenceById(id);
+    public Sight read(int id) {
+        return sightsRepo.getOne(id);
     }
 
     @Override
-    public boolean update(Sight sight, Long id) {
+    public boolean update(Sight sight, int id) {
         if (sightsRepo.existsById(id)) {
             sight.setId(id);
             sightsRepo.save(sight);
@@ -37,7 +37,7 @@ public class SightServiceImpl implements SightService{
     }
 
     @Override
-    public boolean delete(Long id) {
+    public boolean delete(int id) {
         if(sightsRepo.existsById(id)) {
             sightsRepo.existsById(id);
             return true;

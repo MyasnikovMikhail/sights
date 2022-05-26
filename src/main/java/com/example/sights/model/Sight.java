@@ -12,21 +12,21 @@ import java.util.Date;
 public class Sight {
 
     @Id
-    @Column
+    @Column(name = "id_sights")
     @SequenceGenerator(name = "clientsIdSeq", sequenceName = "clients_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private static Long id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
 
-    @Column(name = "name_sight")
+    @Column (name="name_sight")
     private String nameSight;
 
-    @Column(name = "date")
+    @Column (name="date")
     private Date date;
 
-    @Column(name = "description")
+    @Column (name="description")
     private String description;
 
-    @Column(name = "type_sight")
+    @Column (name="type_sight")
     @Enumerated(EnumType.STRING)
     private TypeSight type;
 
@@ -46,15 +46,15 @@ public class Sight {
         this.city = city;
     }
 
-    public static Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public static String getNameSight() {
+    public String getNameSight() {
         return nameSight;
     }
 
@@ -62,7 +62,7 @@ public class Sight {
         this.nameSight = nameSight;
     }
 
-    public static Date getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -70,7 +70,7 @@ public class Sight {
         this.date = date;
     }
 
-    public static String getDescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -78,7 +78,7 @@ public class Sight {
         this.description = description;
     }
 
-    public static TypeSight getType() {
+    public TypeSight getType() {
         return type;
     }
 
@@ -86,7 +86,7 @@ public class Sight {
         this.type = type;
     }
 
-    public static City getCity() {
+    public City getCity() {
         return city;
     }
 

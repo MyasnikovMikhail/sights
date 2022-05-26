@@ -24,12 +24,12 @@ public class CityServiceImpl implements CityService {
     public List<City> readAll() {return citiesRepo.findAll();}
 
     @Override
-    public City read(Long id) {
-        return citiesRepo.getReferenceById(id);
+    public City read(int id) {
+        return citiesRepo.getOne(id);
     }
 
     @Override
-    public boolean update(City city, Long id) {
+    public boolean update(City city, int id) {
         if (citiesRepo.existsById(id)) {
             city.setId(id);
             citiesRepo.save(city);
@@ -40,7 +40,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public boolean delete(Long id) {
+    public boolean delete(int id) {
         if(citiesRepo.existsById(id)) {
             citiesRepo.existsById(id);
             return true;
