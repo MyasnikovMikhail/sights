@@ -1,6 +1,7 @@
 package com.example.sights.controller;
 
 import com.example.sights.model.City;
+import com.example.sights.model.dto.CityDto;
 import com.example.sights.service.CityService;
 import com.example.sights.service.SightService;
 import lombok.NonNull;
@@ -23,14 +24,13 @@ public class CityController {
     }
 
     @PostMapping(value="/cities")
-    public ResponseEntity<Void> create(@RequestBody City city) {
-        cityService.create(city);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public void create(@RequestBody CityDto cityDto) {
+        cityService.create(cityDto);
     }
 
     @GetMapping(value="/cities")
-    public ResponseEntity<List<City>> read() {
-        final List<City> cities = cityService.readAll();
+    public ResponseEntity<List<CityDto>> read() {
+        final List<CityDto> cities = cityService.readAll();
 
         return cities != null &&  !cities.isEmpty()
                 ? new ResponseEntity<>(cities, HttpStatus.OK)
@@ -38,8 +38,8 @@ public class CityController {
     }
 
     @GetMapping(value="/cities/{id}")
-    public ResponseEntity<City> read(@PathVariable(name="id") Long id) {
-        final City city = cityService.read(id);
+    public ResponseEntity<CityDto> read(@PathVariable(name="id") Long id) {
+        final CityDto city = cityService.read(id);
 
         return city != null
                 ? new ResponseEntity<>(city, HttpStatus.OK)
@@ -47,12 +47,7 @@ public class CityController {
     }
 
     @PutMapping(value="/cities/{id}")
-    public ResponseEntity<?> update(@PathVariable(name="id") Long id, @RequestBody City city) {
-        final boolean updated = cityService.update(city, id);
-
-        return updated
-                ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public void update(@PathVariable(name="id") Long id, @RequestBody City city) {
     }
 
     @DeleteMapping(value="/cities/{id}")

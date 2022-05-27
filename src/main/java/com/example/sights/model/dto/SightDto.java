@@ -48,4 +48,7 @@ public class SightDto {
         return city;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

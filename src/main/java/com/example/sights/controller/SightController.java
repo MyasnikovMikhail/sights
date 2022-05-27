@@ -1,9 +1,8 @@
 package com.example.sights.controller;
 
-import com.example.sights.model.Sight;
 import com.example.sights.model.dto.SightDto;
+import com.example.sights.model.dto.SightUpdDto;
 import com.example.sights.service.SightService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +22,13 @@ public class SightController {
     }
 
     @PostMapping(value="/sights")
-    public ResponseEntity<?> create(@RequestBody Sight sight) {
-        sightService.create(sight);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public void create(@RequestBody SightDto sightDto) {
+        sightService.create(sightDto);
     }
 
     @GetMapping(value="/sights")
-    public ResponseEntity<List<Sight>> read() {
-        final List<Sight> sights = sightService.readAll();
+    public ResponseEntity<List<?>> read() {
+        final List<SightDto> sights = sightService.readAll();
 
         return sights != null &&  !sights.isEmpty()
                 ? new ResponseEntity<>(sights, HttpStatus.OK)
@@ -38,21 +36,16 @@ public class SightController {
     }
 
     @GetMapping(value="/sights/{id}")
-    public ResponseEntity<Sight> read(@PathVariable(name="id") Long id) {
-        final Sight sight = sightService.read(id);
-
+    public ResponseEntity<?> read(@PathVariable(name="id") Long id) {
+        final SightDto sight = sightService.read(id);
         return sight != null
                 ? new ResponseEntity<>(sight, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping(value="/sights/{id}")
-    public ResponseEntity<?> update(@PathVariable(name="id") Long id, @RequestBody Sight sight) {
-        final boolean updated = sightService.update(sight, id);
+    public void update(@PathVariable(name="id") Long id, @RequestBody SightUpdDto sight) {
 
-        return updated
-                ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping(value="/sights/{id}")
@@ -63,10 +56,5 @@ public class SightController {
                 ? new ResponseEntity<>(HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
-    /*private SightDto convertToSightDto (Sight sight) {
-        SightDto sightDto = modelMapper.map(sight, SightDto.class);
-
-    }*/
 
 }

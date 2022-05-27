@@ -1,17 +1,19 @@
 package com.example.sights.service;
 
 import com.example.sights.model.City;
+import com.example.sights.model.dto.CityDto;
+import com.example.sights.model.dto.CityUpdDto;
 
 import java.util.List;
 
 public interface CityService {
-    void create(City city);
+    void create(CityDto cityDto);
 
-    List<City> readAll();
+    List<CityDto> readAll();
 
-    City read(Long id);
+    CityDto read(Long id);
 
-    boolean update(City city, Long id);
+    void update(CityUpdDto city, Long id);
 
     boolean delete(Long id);
 
