@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SightController {
 
-    SightService sightService;
+    private final SightService sightService;
 
     /*@Autowired
     public SightController(SightService sightService) {

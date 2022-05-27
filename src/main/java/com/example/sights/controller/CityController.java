@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class CityController {
-    CityService cityService;
+    private final CityService cityService;
 
     /*@Autowired
     public CityController(CityService cityService) {
