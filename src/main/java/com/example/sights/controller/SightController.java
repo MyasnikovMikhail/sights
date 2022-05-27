@@ -1,6 +1,7 @@
 package com.example.sights.controller;
 
 import com.example.sights.model.Sight;
+import com.example.sights.model.dto.SightDto;
 import com.example.sights.service.SightService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class SightController {
 
     private final SightService sightService;
 
-    /*@Autowired
+    @Autowired
     public SightController(SightService sightService) {
         this.sightService = sightService;
-    }*/
+    }
 
     @PostMapping(value="/sights")
     public ResponseEntity<?> create(@RequestBody Sight sight) {
@@ -62,5 +63,10 @@ public class SightController {
                 ? new ResponseEntity<>(HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    /*private SightDto convertToSightDto (Sight sight) {
+        SightDto sightDto = modelMapper.map(sight, SightDto.class);
+
+    }*/
 
 }

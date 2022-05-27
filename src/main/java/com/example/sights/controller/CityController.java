@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class CityController {
     private final CityService cityService;
 
-    /*@Autowired
+    @Autowired
     public CityController(CityService cityService) {
         this.cityService = cityService;
-    }*/
+    }
 
     @PostMapping(value="/cities")
     public ResponseEntity<Void> create(@RequestBody City city) {
