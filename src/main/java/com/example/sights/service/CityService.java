@@ -9,10 +9,10 @@ public interface CityService {
 
     List<City> readAll();
 
-    City read(int id);
+    City read(Long id);
 
-    boolean update(City city, int id);
+    boolean update(City city, Long id);
 
-    boolean delete(int id);
+    boolean delete(Long id);
 
 }

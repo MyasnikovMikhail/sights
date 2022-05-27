@@ -1,37 +1,35 @@
 package com.example.sights.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "sights")
+@Table(name="sights")
 public class Sight {
 
     @Id
-    @Column(name = "id_sights")
-    @SequenceGenerator(name = "clientsIdSeq", sequenceName = "clients_id_seq", allocationSize = 1)
+    @Column(name="id")
+    @SequenceGenerator(name="clientsIdSeq", sequenceName="clients_id_seq", allocationSize = 1)
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
-    @Column (name="name_sight")
+    @Column(name="name_sight")
     private String nameSight;
 
-    @Column (name="date")
+    @Column(name="date")
     private Date date;
 
-    @Column (name="description")
+    @Column(name="description")
     private String description;
 
-    @Column (name="type_sight")
+    @Column(name="type_sight")
     @Enumerated(EnumType.STRING)
     private TypeSight type;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_city", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_city", nullable = false)
     @JsonBackReference
     private City city;
 
@@ -46,11 +44,11 @@ public class Sight {
         this.city = city;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

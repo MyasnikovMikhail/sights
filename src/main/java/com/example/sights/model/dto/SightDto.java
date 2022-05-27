@@ -15,13 +15,13 @@ public class SightDto {
     private TypeSight type;
     private City city;
 
-    public SightDto(Long id, String nameSight, Date date, String description, TypeSight type, City city) {
-        this.id = Sight.getId();
-        this.nameSight = Sight.getNameSight();
-        this.date = Sight.getDate();
-        this.description = Sight.getDescription();
-        this.type = Sight.getType();
-        this.city = Sight.getCity();
+    public SightDto(Sight sight) {
+        this.id = sight.getId();
+        this.nameSight = sight.getNameSight();
+        this.date = sight.getDate();
+        this.description = sight.getDescription();
+        this.type = sight.getType();
+        this.city = sight.getCity();
     }
 
     public Long getId() {

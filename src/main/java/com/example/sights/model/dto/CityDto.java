@@ -1,5 +1,12 @@
 package com.example.sights.model.dto;
 
-public class CityDto {
+import lombok.Data;
 
+@Data
+public class CityDto {
+    Long id;
+    String nameCity;
+    Long numPopulation;
+    boolean availabilityMetro;
+    String country;
 }

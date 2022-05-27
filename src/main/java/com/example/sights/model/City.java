@@ -7,16 +7,15 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "cities")
+@Table(name="cities")
 public class City {
     @Id
-    @Column(name = "id_city")
-    @SequenceGenerator(name = "clientsIdSeq", sequenceName = "clients_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    @Column(name="id")
+    @SequenceGenerator(name="clientsIdSeq", sequenceName="clients_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="clientsIdSeq")
+    private Long id;
 
-    @Column (name="name_city")
+    @Column(name="name_city")
     private String nameCity;
 
     @Column (name="num_population")
@@ -28,7 +27,7 @@ public class City {
     @Column (name="country")
     private String country;
 
-   @OneToMany(fetch = FetchType.EAGER, mappedBy = "city") //вернуться потом
+   @OneToMany(fetch = FetchType.LAZY, mappedBy="city") //вернуться потом
    @JsonManagedReference
     private Set<Sight> sightsCity;
 
@@ -43,11 +42,11 @@ public class City {
         this.country = country;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -90,4 +89,6 @@ public class City {
     public void setSightsCity(Set<Sight> sightsCity) {
         this.sightsCity = sightsCity;
     }
+
+
 }
