@@ -1,12 +1,13 @@
 package com.example.sights.service;
 
+import com.example.sights.model.Sight;
 import com.example.sights.model.dto.SightDto;
 import com.example.sights.model.dto.SightUpdDto;
 
 import java.util.List;
 
 public interface SightService {
-    void create(SightDto sightDto);
+    void create(SightDto sight);
 
     List<SightDto> readAll();
 

@@ -24,26 +24,18 @@ public class CityController {
     }
 
     @PostMapping(value="/cities")
-    public void create(@RequestBody CityDto cityDto) {
-        cityService.create(cityDto);
+    public void create(@RequestBody CityDto city) {
+        cityService.create(city);
     }
 
     @GetMapping(value="/cities")
-    public ResponseEntity<List<CityDto>> read() {
-        final List<CityDto> cities = cityService.readAll();
-
-        return cities != null &&  !cities.isEmpty()
-                ? new ResponseEntity<>(cities, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public List<CityDto> read() {
+        return cityService.readAll();
     }
 
     @GetMapping(value="/cities/{id}")
-    public ResponseEntity<CityDto> read(@PathVariable(name="id") Long id) {
-        final CityDto city = cityService.read(id);
-
-        return city != null
-                ? new ResponseEntity<>(city, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+    public CityDto read(@PathVariable(name="id") Long id) {
+        return cityService.read(id);
     }
 
     @PutMapping(value="/cities/{id}")

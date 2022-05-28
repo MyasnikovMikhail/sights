@@ -4,20 +4,11 @@ import com.example.sights.model.City;
 
 
 public class CityDto {
-    Long id;
-    String nameCity;
-    int numPopulation;
-    boolean availabilityMetro;
-    String country;
-
-    public CityDto(City city) {
-        this.id = city.getId();
-        this.nameCity = city.getNameCity();
-        this.numPopulation = city.getNumPopulation();
-        this.availabilityMetro = isAvailabilityMetro();
-        this.country = city.getCountry();
-    }
-
+    private Long id;
+    private String nameCity;
+    private int numPopulation;
+    private boolean availabilityMetro;
+    private String country;
     public Long getId() {
         return id;
     }
@@ -42,12 +33,20 @@ public class CityDto {
         this.id = id;
     }
 
+    public void setNameCity(String nameCity) {
+        this.nameCity = nameCity;
+    }
+
     public void setNumPopulation(int numPopulation) {
         this.numPopulation = numPopulation;
     }
 
     public void setAvailabilityMetro(boolean availabilityMetro) {
         this.availabilityMetro = availabilityMetro;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
 }

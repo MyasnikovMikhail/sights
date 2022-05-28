@@ -1,5 +1,7 @@
 package com.example.sights.controller;
 
+import com.example.sights.model.City;
+import com.example.sights.model.Sight;
 import com.example.sights.model.dto.SightDto;
 import com.example.sights.model.dto.SightUpdDto;
 import com.example.sights.service.SightService;
@@ -22,25 +24,18 @@ public class SightController {
     }
 
     @PostMapping(value="/sights")
-    public void create(@RequestBody SightDto sightDto) {
-        sightService.create(sightDto);
+    public void create(@RequestBody SightDto sight) {
+        sightService.create(sight);
     }
 
     @GetMapping(value="/sights")
-    public ResponseEntity<List<?>> read() {
-        final List<SightDto> sights = sightService.readAll();
-
-        return sights != null &&  !sights.isEmpty()
-                ? new ResponseEntity<>(sights, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+    public List<SightDto> read() {
+        return sightService.readAll();
     }
 
     @GetMapping(value="/sights/{id}")
-    public ResponseEntity<?> read(@PathVariable(name="id") Long id) {
-        final SightDto sight = sightService.read(id);
-        return sight != null
-                ? new ResponseEntity<>(sight, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public SightDto read(@PathVariable(name="id") Long id) {
+        return sightService.read(id);
     }
 
     @PutMapping(value="/sights/{id}")

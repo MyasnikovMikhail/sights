@@ -89,6 +89,4 @@ public class City {
     public void setSightsCity(Set<Sight> sightsCity) {
         this.sightsCity = sightsCity;
     }
-
-
 }

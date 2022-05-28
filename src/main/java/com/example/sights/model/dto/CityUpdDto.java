@@ -1,15 +1,9 @@
 package com.example.sights.model.dto;
 
-import com.example.sights.model.City;
-
 public class CityUpdDto {
     int numPopulation;
     boolean availabilityMetro;
 
-    public CityUpdDto(City city) {
-        this.numPopulation = city.getNumPopulation();
-        this.availabilityMetro = city.isAvailabilityMetro();
-    }
 
     public int getNumPopulation() {
         return numPopulation;

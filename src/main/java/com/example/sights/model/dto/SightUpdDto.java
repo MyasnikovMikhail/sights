@@ -6,12 +6,12 @@ public class SightUpdDto {
 
     private String description;
 
-    public SightUpdDto(Sight sight) {
-        this.description = sight.getDescription();
-    }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

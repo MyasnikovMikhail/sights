@@ -91,4 +91,5 @@ public class Sight {
     public void setCity(City city) {
         this.city = city;
     }
+
 }

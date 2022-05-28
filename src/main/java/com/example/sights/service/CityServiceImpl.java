@@ -3,14 +3,13 @@ package com.example.sights.service;
 import com.example.sights.model.City;
 import com.example.sights.model.dto.CityDto;
 import com.example.sights.model.dto.CityUpdDto;
-import com.example.sights.model.dto.SightDto;
-import com.example.sights.model.dto.SightUpdDto;
 import com.example.sights.repos.CitiesRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityExistsException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CityServiceImpl implements CityService {
@@ -23,23 +22,29 @@ public class CityServiceImpl implements CityService {
     @Transactional
     @Override
     public void create(CityDto city) {
-        citiesRepo.save(city);
+        citiesRepo.save(CityDtoToCity(city));
     }
+
     @Transactional
     @Override
-    public List<CityDto> readAll() {return citiesRepo.findAll();}
+    public List<CityDto> readAll() {
+        return citiesRepo
+            .findAll()
+            .stream()
+            .map(this::convertToCityDTO)
+            .collect(Collectors.toList());}
     @Transactional
     @Override
     public CityDto read(Long id) {
-        return citiesRepo.getReferenceById(id);
+        return convertToCityDTO(citiesRepo.findById(id).get());
     }
     @Transactional
     @Override
     public void update(CityUpdDto dto, Long id) {
-        CityDto sight = citiesRepo.findById(id)
+        City city = citiesRepo.findById(id)
                 .orElseThrow(EntityExistsException::new);
-        sight.setNumPopulation(dto.getNumPopulation());
-        sight.setAvailabilityMetro(dto.isAvailabilityMetro());
+        city.setNumPopulation(dto.getNumPopulation());
+        city.setAvailabilityMetro(dto.isAvailabilityMetro());
     }
 
     @Transactional
@@ -51,5 +56,34 @@ public class CityServiceImpl implements CityService {
         }
         return false;
     }
+
+    private CityDto convertToCityDTO(City city) {
+        CityDto cityDto = new CityDto();
+        cityDto.setId(city.getId());
+        cityDto.setNameCity(city.getNameCity());
+        cityDto.setNumPopulation(city.getNumPopulation());
+        cityDto.setAvailabilityMetro(city.isAvailabilityMetro());
+        cityDto.setCountry(city.getCountry());
+        return cityDto;
+    }
+
+    /*private CityUpdDto convertToCityUpdDTO (City city) {
+        CityUpdDto cityUpdDto = new CityUpdDto();
+        cityUpdDto.setNumPopulation(city.getNumPopulation());
+        cityUpdDto.setAvailabilityMetro(city.isAvailabilityMetro());
+        return cityUpdDto;
+    }*/
+
+    private City CityDtoToCity (CityDto cityDto) {
+        City city = new City();
+        city.setNameCity(cityDto.getNameCity());
+        city.setNumPopulation(cityDto.getNumPopulation());
+        city.setAvailabilityMetro(cityDto.isAvailabilityMetro());
+        city.setCountry(cityDto.getCountry());
+        return city;
+
+    }
+
+
 
 }
