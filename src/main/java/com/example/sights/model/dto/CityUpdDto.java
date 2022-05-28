@@ -3,15 +3,15 @@ package com.example.sights.model.dto;
 import com.example.sights.model.City;
 
 public class CityUpdDto {
-    Long numPopulation;
+    int numPopulation;
     boolean availabilityMetro;
 
     public CityUpdDto(City city) {
-        this.availabilityMetro = city.isAvailabilityMetro();
         this.numPopulation = city.getNumPopulation();
+        this.availabilityMetro = city.isAvailabilityMetro();
     }
 
-    public Long getNumPopulation() {
+    public int getNumPopulation() {
         return numPopulation;
     }
 
@@ -19,7 +19,7 @@ public class CityUpdDto {
         return availabilityMetro;
     }
 
-    public void setNumPopulation(Long numPopulation) {
+    public void setNumPopulation(int numPopulation) {
         this.numPopulation = numPopulation;
     }
 

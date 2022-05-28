@@ -1,14 +1,12 @@
 package com.example.sights.model.dto;
 
 import com.example.sights.model.City;
-import com.example.sights.model.Sight;
-import lombok.Data;
 
-@Data
+
 public class CityDto {
     Long id;
     String nameCity;
-    Long numPopulation;
+    int numPopulation;
     boolean availabilityMetro;
     String country;
 
@@ -28,7 +26,7 @@ public class CityDto {
         return nameCity;
     }
 
-    public Long getNumPopulation() {
+    public int getNumPopulation() {
         return numPopulation;
     }
 
@@ -39,4 +37,17 @@ public class CityDto {
     public String getCountry() {
         return country;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setNumPopulation(int numPopulation) {
+        this.numPopulation = numPopulation;
+    }
+
+    public void setAvailabilityMetro(boolean availabilityMetro) {
+        this.availabilityMetro = availabilityMetro;
+    }
+
 }

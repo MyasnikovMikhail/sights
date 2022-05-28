@@ -39,10 +39,8 @@ public class CityServiceImpl implements CityService {
         CityDto sight = citiesRepo.findById(id)
                 .orElseThrow(EntityExistsException::new);
         sight.setNumPopulation(dto.getNumPopulation());
-        sight.isAvailabilityMetro();
+        sight.setAvailabilityMetro(dto.isAvailabilityMetro());
     }
-
-
 
     @Transactional
     @Override

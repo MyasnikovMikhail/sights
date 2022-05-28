@@ -19,7 +19,7 @@ public class City {
     private String nameCity;
 
     @Column (name="num_population")
-    private Long numPopulation;
+    private int numPopulation;
 
     @Column (name="availability_metro")
     private boolean availabilityMetro;
@@ -35,7 +35,7 @@ public class City {
     public City() {
     }
 
-    public City(String nameCity, Long numPopulation, boolean availabilityMetro, String country) {
+    public City(String nameCity, int numPopulation, boolean availabilityMetro, String country) {
         this.nameCity = nameCity;
         this.numPopulation = numPopulation;
         this.availabilityMetro = availabilityMetro;
@@ -58,11 +58,11 @@ public class City {
         this.nameCity = nameCity;
     }
 
-    public Long getNumPopulation() {
+    public int getNumPopulation() {
         return numPopulation;
     }
 
-    public void setNumPopulation(Long numPopulation) {
+    public void setNumPopulation(int numPopulation) {
         this.numPopulation = numPopulation;
     }
 
