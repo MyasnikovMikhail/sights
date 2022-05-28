@@ -18,15 +18,15 @@ public class City {
     private String nameCity;
 
     @Column (name="num_population")
-    private int numPopulation;
+    private Integer numPopulation;
 
     @Column (name="availability_metro")
-    private boolean availabilityMetro;
+    private Boolean availabilityMetro;
 
     @Column (name="country")
     private String country;
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy="city") //вернуться потом
+   @OneToMany(fetch = FetchType.LAZY,mappedBy="city")
    @JsonManagedReference
     private Set<Sight> sightsCity;
 
