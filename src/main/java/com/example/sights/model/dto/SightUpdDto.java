@@ -1,7 +1,5 @@
 package com.example.sights.model.dto;
 
-import com.example.sights.model.Sight;
-
 public class SightUpdDto {
 
     private String description;

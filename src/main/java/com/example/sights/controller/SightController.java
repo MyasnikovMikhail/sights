@@ -1,7 +1,5 @@
 package com.example.sights.controller;
 
-import com.example.sights.model.City;
-import com.example.sights.model.Sight;
 import com.example.sights.model.dto.SightDto;
 import com.example.sights.model.dto.SightUpdDto;
 import com.example.sights.service.SightService;
@@ -38,9 +36,15 @@ public class SightController {
         return sightService.read(id);
     }
 
+    @GetMapping(value="/sights/by-city/{id}")
+    public List<SightDto> sightsByCity(@PathVariable(name="id") Long id) {
+        return sightService.getSightsByCity(id);
+    }
+
+
     @PutMapping(value="/sights/{id}")
     public void update(@PathVariable(name="id") Long id, @RequestBody SightUpdDto sight) {
-
+        sightService.update(sight,id);
     }
 
     @DeleteMapping(value="/sights/{id}")

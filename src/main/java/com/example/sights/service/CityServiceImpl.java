@@ -3,6 +3,7 @@ package com.example.sights.service;
 import com.example.sights.model.City;
 import com.example.sights.model.dto.CityDto;
 import com.example.sights.model.dto.CityUpdDto;
+import com.example.sights.model.dto.SightDto;
 import com.example.sights.repos.CitiesRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,7 @@ public class CityServiceImpl implements CityService {
     @Transactional
     @Override
     public void create(CityDto city) {
-        citiesRepo.save(CityDtoToCity(city));
+        citiesRepo.save(cityDtoToCity(city));
     }
 
     @Transactional
@@ -57,6 +58,8 @@ public class CityServiceImpl implements CityService {
         return false;
     }
 
+
+
     private CityDto convertToCityDTO(City city) {
         CityDto cityDto = new CityDto();
         cityDto.setId(city.getId());
@@ -67,14 +70,7 @@ public class CityServiceImpl implements CityService {
         return cityDto;
     }
 
-    /*private CityUpdDto convertToCityUpdDTO (City city) {
-        CityUpdDto cityUpdDto = new CityUpdDto();
-        cityUpdDto.setNumPopulation(city.getNumPopulation());
-        cityUpdDto.setAvailabilityMetro(city.isAvailabilityMetro());
-        return cityUpdDto;
-    }*/
-
-    private City CityDtoToCity (CityDto cityDto) {
+    private City cityDtoToCity(CityDto cityDto) {
         City city = new City();
         city.setNameCity(cityDto.getNameCity());
         city.setNumPopulation(cityDto.getNumPopulation());

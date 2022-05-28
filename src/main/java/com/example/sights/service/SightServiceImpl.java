@@ -1,9 +1,10 @@
 package com.example.sights.service;
 
+import com.example.sights.model.City;
 import com.example.sights.model.Sight;
-import com.example.sights.model.dto.CityDto;
 import com.example.sights.model.dto.SightDto;
 import com.example.sights.model.dto.SightUpdDto;
+import com.example.sights.repos.CitiesRepo;
 import com.example.sights.repos.SightsRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,12 +16,15 @@ import java.util.stream.Collectors;
 @Service
 public class SightServiceImpl implements SightService{
     private final SightsRepo sightsRepo;
+    private final CitiesRepo citiesRepo;
 
-    public SightServiceImpl(SightsRepo sightsRepo) {this.sightsRepo = sightsRepo;}
+    public SightServiceImpl(SightsRepo sightsRepo, CitiesRepo citiesRepo) {this.sightsRepo = sightsRepo;
+        this.citiesRepo = citiesRepo;
+    }
     @Transactional
     @Override
     public void create(SightDto sight) {
-        sightsRepo.save(SightDtoToSight(sight));
+        sightsRepo.save(sightDtoToSight(sight));
     }
 
     @Transactional
@@ -56,6 +60,15 @@ public class SightServiceImpl implements SightService{
         return false;
     }
 
+    @Transactional
+    public List<SightDto> getSightsByCity(Long cityId) {
+        City cityRef = citiesRepo.getReferenceById(cityId);
+        return sightsRepo.findByCity(cityRef)
+                .stream()
+                .map(this::convertToSightDTO)
+                . collect (Collectors. toList());
+    }
+
     private SightDto convertToSightDTO(Sight sight) {
         SightDto sightDto = new SightDto();
         sightDto.setId(sight.getId());
@@ -66,13 +79,8 @@ public class SightServiceImpl implements SightService{
         sightDto.setCity(sight.getCity());
         return sightDto;
     }
-    /*private SightUpdDto convertToSightUpdDTO(Sight sight) {
-        SightUpdDto sightUpdDto = new SightUpdDto();
-        sightUpdDto.setDescription(sight.getDescription());
-        return sightUpdDto;
-    }*/
 
-    private Sight SightDtoToSight(SightDto sightDto) {
+    private Sight sightDtoToSight(SightDto sightDto) {
         Sight sight = new Sight();
         sight.setNameSight(sightDto.getNameSight());
         sight.setDate(sightDto.getDate());
