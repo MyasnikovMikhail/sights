@@ -24,6 +24,7 @@ public class SightController {
     @PostMapping(value="/sights")
     public void create(@RequestBody SightDto sight) {
         sightService.create(sight);
+
     }
 
     @GetMapping(value="/sights")

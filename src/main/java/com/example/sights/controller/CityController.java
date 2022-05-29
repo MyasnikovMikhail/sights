@@ -26,7 +26,7 @@ public class CityController {
     }
 
     @GetMapping(value="/cities")
-    public List<CityDto> read() {
+    public List<CityDto> readAll() {
         return cityService.readAll();
     }
 

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityExistsException;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,8 +24,11 @@ public class SightServiceImpl implements SightService{
     }
     @Transactional
     @Override
-    public void create(SightDto sight) {
-        sightsRepo.save(sightDtoToSight(sight));
+    public void create(SightDto dto) {
+        City city = citiesRepo.getReferenceById(dto.getCityId());
+        Sight sight = sightDtoToSight(dto);
+        sight.setCity(city);
+        sightsRepo.save(sight);
     }
 
     @Transactional
@@ -66,7 +70,7 @@ public class SightServiceImpl implements SightService{
         return sightsRepo.findByCity(cityRef)
                 .stream()
                 .map(this::convertToSightDTO)
-                . collect (Collectors. toList());
+                .collect (Collectors. toList());
     }
 
     private SightDto convertToSightDTO(Sight sight) {
@@ -76,7 +80,7 @@ public class SightServiceImpl implements SightService{
         sightDto.setDate(sight.getDate());
         sightDto.setDescription(sight.getDescription());
         sightDto.setType(sight.getType());
-        sightDto.setCity(sight.getCity());
+        sightDto.setCityId(sight.getCity().getId());
         return sightDto;
     }
 
@@ -86,7 +90,6 @@ public class SightServiceImpl implements SightService{
         sight.setDate(sightDto.getDate());
         sight.setDescription(sightDto.getDescription());
         sight.setType(sightDto.getType());
-        sight.setCity(sightDto.getCity());
         return sight;
     }
 }

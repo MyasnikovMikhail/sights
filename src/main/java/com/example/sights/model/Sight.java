@@ -30,7 +30,7 @@ public class Sight {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_city", nullable = false)
-    @JsonBackReference
+    //@JsonBackReference
     private City city;
 
     public Sight() {

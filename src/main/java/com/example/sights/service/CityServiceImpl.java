@@ -67,7 +67,6 @@ public class CityServiceImpl implements CityService {
         cityDto.setNumPopulation(city.getNumPopulation());
         cityDto.setAvailabilityMetro(city.isAvailabilityMetro());
         cityDto.setCountry(city.getCountry());
-        cityDto.setSightsCity(city.getSightsCity());
         return cityDto;
     }
 
@@ -77,7 +76,6 @@ public class CityServiceImpl implements CityService {
         city.setNumPopulation(cityDto.getNumPopulation());
         city.setAvailabilityMetro(cityDto.isAvailabilityMetro());
         city.setCountry(cityDto.getCountry());
-        city.setSightsCity(cityDto.getSightsCity());
         return city;
 
     }

@@ -12,7 +12,10 @@ public class CityDto {
     private boolean availabilityMetro;
     private String country;
 
-    private Set<Sight> sightsCity;
+    public CityDto() {
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -53,11 +56,4 @@ public class CityDto {
         this.country = country;
     }
 
-    public Set<Sight> getSightsCity() {
-        return sightsCity;
     }
-
-    public void setSightsCity(Set<Sight> sightsCity) {
-        this.sightsCity = sightsCity;
-    }
-}

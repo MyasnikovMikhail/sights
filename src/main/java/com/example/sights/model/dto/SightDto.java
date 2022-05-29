@@ -12,8 +12,10 @@ public class SightDto {
     private Date date;
     private String description;
     private TypeSight type;
-    private City city;
+    private Long cityId;
 
+    public SightDto() {
+    }
 
     public Long getId() {
         return id;
@@ -35,8 +37,8 @@ public class SightDto {
         return type;
     }
 
-    public City getCity() {
-        return city;
+    public Long getCityId() {
+        return cityId;
     }
 
     public void setDescription(String description) {
@@ -59,7 +61,7 @@ public class SightDto {
         this.type = type;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
     }
 }

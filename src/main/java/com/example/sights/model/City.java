@@ -27,11 +27,10 @@ public class City {
     private String country;
 
    @OneToMany(fetch = FetchType.LAZY,mappedBy="city")
-   @JsonManagedReference
+   //@JsonManagedReference
     private Set<Sight> sightsCity;
 
-
-    public City() {
+   public City() {
     }
 
     public City(String nameCity, int numPopulation, boolean availabilityMetro, String country) {
@@ -88,4 +87,5 @@ public class City {
     public void setSightsCity(Set<Sight> sightsCity) {
         this.sightsCity = sightsCity;
     }
+
 }
