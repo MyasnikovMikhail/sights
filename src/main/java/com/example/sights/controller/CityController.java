@@ -41,11 +41,7 @@ public class CityController {
     }
 
     @DeleteMapping(value="/cities/{id}")
-    public ResponseEntity<?> delete(@PathVariable(name="id") Long id) {
-        final boolean deleted = cityService.delete(id);
-
-        return deleted
-                ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public void delete(@PathVariable(name="id") Long id) {
+        cityService.delete(id);
     }
 }

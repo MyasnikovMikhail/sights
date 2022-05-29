@@ -56,12 +56,8 @@ public class SightServiceImpl implements SightService{
 
     @Transactional
     @Override
-    public boolean delete(Long id) {
-        if(sightsRepo.existsById(id)) {
-            sightsRepo.existsById(id);
-            return true;
-        }
-        return false;
+    public void delete(Long id) {
+        sightsRepo.deleteById(id);
     }
 
     @Transactional

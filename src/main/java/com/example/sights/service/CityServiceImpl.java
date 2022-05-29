@@ -39,6 +39,7 @@ public class CityServiceImpl implements CityService {
     public CityDto read(Long id) {
         return convertToCityDTO(citiesRepo.findById(id).get());
     }
+
     @Transactional
     @Override
     public void update(CityUpdDto dto, Long id) {
@@ -50,12 +51,8 @@ public class CityServiceImpl implements CityService {
 
     @Transactional
     @Override
-    public boolean delete(Long id) {
-        if(citiesRepo.existsById(id)) {
-            citiesRepo.existsById(id);
-            return true;
-        }
-        return false;
+    public void delete(Long id) {
+        citiesRepo.deleteById(id);
     }
 
 

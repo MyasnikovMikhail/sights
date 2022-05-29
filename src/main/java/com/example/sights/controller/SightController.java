@@ -49,12 +49,9 @@ public class SightController {
     }
 
     @DeleteMapping(value="/sights/{id}")
-    public ResponseEntity<?> delete(@PathVariable(name="id") Long id) {
-        final boolean deleted = sightService.delete(id);
+    public void delete(@PathVariable(name="id") Long id) {
+        sightService.delete(id);
 
-        return deleted
-                ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }
