@@ -28,12 +28,13 @@ public class SightController {
     }
 
     @GetMapping(value="/sights")
-    public List<SightDto> read() {
+    public List<SightDto> readAll() {
         return sightService.readAll();
     }
 
     @GetMapping(value="/sights/{id}")
     public SightDto read(@PathVariable(name="id") Long id) {
+
         return sightService.read(id);
     }
 
