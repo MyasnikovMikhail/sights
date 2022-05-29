@@ -4,6 +4,8 @@ public class CityUpdDto {
     int numPopulation;
     boolean availabilityMetro;
 
+    public CityUpdDto() {
+    }
 
     public int getNumPopulation() {
         return numPopulation;

@@ -4,14 +4,12 @@ import com.example.sights.model.dto.SightDto;
 import com.example.sights.model.dto.SightUpdDto;
 import com.example.sights.service.SightService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-//@RequiredArgsConstructor
+
 public class SightController {
 
     private final SightService sightService;

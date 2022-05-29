@@ -1,6 +1,5 @@
 package com.example.sights.service;
 
-import com.example.sights.model.dto.CityDto;
 import com.example.sights.model.dto.SightDto;
 import com.example.sights.model.dto.SightUpdDto;
 

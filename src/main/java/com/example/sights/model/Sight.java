@@ -1,7 +1,5 @@
 package com.example.sights.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -30,7 +28,6 @@ public class Sight {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_city", nullable = false)
-    //@JsonBackReference
     private City city;
 
     public Sight() {

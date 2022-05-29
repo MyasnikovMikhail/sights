@@ -1,6 +1,5 @@
 package com.example.sights.model.dto;
 
-import com.example.sights.model.City;
 import com.example.sights.model.TypeSight;
 
 import java.util.Date;

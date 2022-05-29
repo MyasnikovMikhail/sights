@@ -1,10 +1,6 @@
 package com.example.sights.model.dto;
 
 
-import com.example.sights.model.Sight;
-
-import java.util.Set;
-
 public class CityDto {
     private Long id;
     private String nameCity;

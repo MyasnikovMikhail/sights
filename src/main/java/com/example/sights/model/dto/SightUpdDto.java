@@ -4,6 +4,8 @@ public class SightUpdDto {
 
     private String description;
 
+    public SightUpdDto() {
+    }
 
     public String getDescription() {
         return description;

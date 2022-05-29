@@ -1,20 +1,15 @@
 package com.example.sights.controller;
 
-import com.example.sights.exceptions.IncorrectData;
-import com.example.sights.exceptions.NoSuchException;
-import com.example.sights.model.City;
 import com.example.sights.model.dto.CityDto;
 import com.example.sights.model.dto.CityUpdDto;
 import com.example.sights.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-//@RequiredArgsConstructor
+
 public class CityController {
     private final CityService cityService;
 
