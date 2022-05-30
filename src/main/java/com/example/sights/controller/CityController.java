@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 
 public class CityController {
+
     private final CityService cityService;
 
     @Autowired
@@ -32,9 +33,6 @@ public class CityController {
     public CityDto read(@PathVariable(name="id") Long id) {
         return cityService.read(id);
     }
-
-
-
 
     @PutMapping(value="/cities/{id}")
     public void update(@PathVariable(name="id") Long id, @RequestBody CityUpdDto city) {

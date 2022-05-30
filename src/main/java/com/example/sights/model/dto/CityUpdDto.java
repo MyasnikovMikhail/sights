@@ -1,7 +1,9 @@
 package com.example.sights.model.dto;
 
 public class CityUpdDto {
+
     int numPopulation;
+
     boolean availabilityMetro;
 
     public CityUpdDto() {

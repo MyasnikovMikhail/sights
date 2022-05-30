@@ -1,5 +1,6 @@
 package com.example.sights.service;
 
+import com.example.sights.exceptions.NoSuchObjectException;
 import com.example.sights.model.City;
 import com.example.sights.model.Sight;
 import com.example.sights.model.dto.SightDto;
@@ -9,19 +10,21 @@ import com.example.sights.repos.SightsRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 public class SightServiceImpl implements SightService{
+
     private final SightsRepo sightsRepo;
+
     private final CitiesRepo citiesRepo;
 
     public SightServiceImpl(SightsRepo sightsRepo, CitiesRepo citiesRepo) {this.sightsRepo = sightsRepo;
         this.citiesRepo = citiesRepo;
     }
+
     @Transactional
     @Override
     public void create(SightDto dto) {
@@ -44,14 +47,17 @@ public class SightServiceImpl implements SightService{
     @Transactional
     @Override
     public SightDto read(Long id) {
-        return convertToSightDTO(sightsRepo.findById(id).get());
+        Sight sight = sightsRepo.findById(id)
+                .orElseThrow(() -> new NoSuchObjectException("There is no sight with ID = " + id + " in Database"));
+        return convertToSightDTO(sight);
     }
+
     @Transactional
     @Override
     public void update(SightUpdDto dto, Long id) {
         Sight sight = sightsRepo.findById(id)
-                .orElseThrow(EntityExistsException::new);
-            sight.setDescription(dto.getDescription());
+                .orElseThrow(EntityNotFoundException::new);
+        sight.setDescription(dto.getDescription());
     }
 
     @Transactional

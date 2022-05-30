@@ -6,6 +6,7 @@ import java.util.Set;
 @Entity
 @Table(name="cities")
 public class City {
+
     @Id
     @Column(name="id")
     @SequenceGenerator(name="clientsIdSeq", sequenceName="clients_id_seq", allocationSize = 1)
@@ -24,11 +25,10 @@ public class City {
     @Column (name="country")
     private String country;
 
-   @OneToMany(fetch = FetchType.LAZY,mappedBy="city")
-   //@JsonManagedReference
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="city")
     private Set<Sight> sightsCity;
 
-   public City() {
+    public City() {
     }
 
     public City(String nameCity, int numPopulation, boolean availabilityMetro, String country) {

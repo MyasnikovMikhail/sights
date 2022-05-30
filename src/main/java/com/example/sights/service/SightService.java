@@ -16,5 +16,4 @@ public interface SightService {
 
     void delete(Long id);
     List<SightDto> getSightsByCity (Long id);
-
 }

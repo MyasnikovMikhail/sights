@@ -1,6 +1,7 @@
 package com.example.sights.exceptions;
 
 public class IncorrectData {
+
     private String info;
 
     public IncorrectData() {

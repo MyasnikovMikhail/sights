@@ -6,6 +6,7 @@ import com.example.sights.model.dto.CityUpdDto;
 import java.util.List;
 
 public interface CityService {
+
     void create(CityDto city);
 
     List<CityDto> readAll();
@@ -15,6 +16,4 @@ public interface CityService {
     void update(CityUpdDto city, Long id);
 
     void delete(Long id);
-
-
 }

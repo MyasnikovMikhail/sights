@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface SightsRepo extends JpaRepository<Sight, Long> {
 
-List<Sight> findByCity(City city);
+    List<Sight> findByCity(City city);
 }

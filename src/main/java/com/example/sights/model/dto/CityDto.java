@@ -1,11 +1,15 @@
 package com.example.sights.model.dto;
 
-
 public class CityDto {
+
     private Long id;
+
     private String nameCity;
+
     private int numPopulation;
+
     private boolean availabilityMetro;
+
     private String country;
 
     public CityDto() {
@@ -52,4 +56,4 @@ public class CityDto {
         this.country = country;
     }
 
-    }
+}

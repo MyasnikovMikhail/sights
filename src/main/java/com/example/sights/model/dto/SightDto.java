@@ -6,11 +6,17 @@ import java.util.Date;
 
 
 public class SightDto {
+
     private Long id;
+
     private String nameSight;
+
     private Date date;
+
     private String description;
+
     private TypeSight type;
+
     private Long cityId;
 
     public SightDto() {

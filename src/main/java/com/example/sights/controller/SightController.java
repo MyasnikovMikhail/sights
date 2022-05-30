@@ -41,7 +41,6 @@ public class SightController {
         return sightService.getSightsByCity(id);
     }
 
-
     @PutMapping(value="/sights/{id}")
     public void update(@PathVariable(name="id") Long id, @RequestBody SightUpdDto sight) {
         sightService.update(sight,id);
@@ -52,5 +51,4 @@ public class SightController {
         sightService.delete(id);
 
     }
-
 }
