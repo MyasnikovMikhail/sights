@@ -10,8 +10,8 @@ spring:
     init:
       platform: postgres
   jpa:
-        database: postgresql
-        show-sql: true
-        hibernate:
-          ddl-auto: update
-        database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect

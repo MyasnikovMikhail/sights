@@ -21,6 +21,7 @@ mvnw.cmd
 *.iws
 *.iml
 *.ipr
+*.xml
 
 ### NetBeans ###
 /nbproject/private/
@@ -38,3 +39,4 @@ build/
 /.idea/
 /.mvn/
 /lib/
+/.idea/

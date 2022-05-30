@@ -1,5 +1,6 @@
 package com.example.sights.exceptions;
 
+import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,7 +18,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<IncorrectData> handlerException(Exception exception) {
+    public ResponseEntity<IncorrectData> handlerException(NumberFormatException exception) {
         IncorrectData data = new IncorrectData();
         data.setInfo(exception.getMessage());
 
