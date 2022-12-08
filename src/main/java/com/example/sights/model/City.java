@@ -4,28 +4,28 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="cities")
+@Table(name = "cities")
 public class City {
 
     @Id
-    @Column(name="id")
-    @SequenceGenerator(name="clientsIdSeq", sequenceName="clients_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="clientsIdSeq")
+    @Column(name = "id")
+    @SequenceGenerator(name = "clientsIdSeq", sequenceName = "clients_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "clientsIdSeq")
     private Long id;
 
-    @Column(name="name_city")
+    @Column(name = "name_city")
     private String nameCity;
 
-    @Column (name="num_population")
+    @Column(name = "num_population")
     private Integer numPopulation;
 
-    @Column (name="availability_metro")
+    @Column(name = "availability_metro")
     private Boolean availabilityMetro;
 
-    @Column (name="country")
+    @Column(name = "country")
     private String country;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy="city")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "city")
     private Set<Sight> sightsCity;
 
     public City() {
